@@ -1,5 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 <div>
-  <table id="product_list" class="display" style="width: 100%"></table>
+  <table id="product_list" class="display" style="width: 100%">
+    <thead>
+      <tr>
+        {% for column, formatted in columns %}
+        <th data-data="{{ column }}">{{ formatted }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+  </table>
 </div>
 {% include 'products/scripts.html' %} {% endblock %}

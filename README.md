@@ -5,7 +5,7 @@ Para tornar o problema mais próximo da realidade criei um Model para representa
 
 > Caso precise alterar os dados estão no arquivo `products/data.py`.
 
-Para simplificar a pivotagem das vendas por data utilizei o pacote django-pivot e para renderização da tabela o clássico DataTables.
+Para simplificar a pivotagem das vendas por data utilizei o pacote django-pivot e para renderização da tabela o clássico DataTables. Com a necessidade de serverSide no DataTables utilizei o djangorestframework-datatables como middleware para tratar as propriedades enviadas.
 
 A lógica do ajax está no arquivo products/static/products/js/main.js.
 

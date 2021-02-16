@@ -17,6 +17,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'products',
+    'rest_framework',
+    'rest_framework_datatables'
 ]
 
 MIDDLEWARE = [
@@ -74,7 +76,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt'
 
 TIME_ZONE = 'UTC'
 
@@ -90,3 +92,16 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        'rest_framework_datatables.renderers.DatatablesRenderer',
+    ),
+    'DEFAULT_FILTER_BACKENDS': (
+        'rest_framework_datatables.filters.DatatablesFilterBackend',
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework_datatables.pagination.DatatablesPageNumberPagination',
+    'PAGE_SIZE': 10,
+}

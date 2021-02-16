@@ -9,5 +9,16 @@ class ProductUrl(models.Model):
     store_url = models.URLField()
     sales = models.IntegerField(default=0)
 
+    def get_column_name(column):
+        names = {
+            'product_url': 'Produto',
+            'created_at': 'Data inserção na loja',
+            'sales': 'Total de vendas',
+            'image': 'Imagens',
+            'consult_date': 'Data de Consulta',
+        }
+
+        return names.get(column)
+
     def __str__(self):
         return self.product_url
