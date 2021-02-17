@@ -28,9 +28,7 @@ class ProductListView(TemplateView):
 class ProductDataView(ListAPIView):
     queryset = ProductUrl.objects.all()
 
-    def filter_queryset(self, queryset):
-        queryset = super(ProductDataView, self).filter_queryset(queryset)
-
+    def get_queryset(self):
         queryset = pivot(ProductUrl,
                          ['product_url', 'created_at'],
                          'consult_date',
