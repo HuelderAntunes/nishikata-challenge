@@ -26,7 +26,7 @@ class ProductListView(TemplateView):
 
 
 class ProductDataView(ListAPIView):
-    queryset = ProductUrl
+    queryset = ProductUrl.objects.all()
 
     def filter_queryset(self, queryset):
         queryset = super(ProductDataView, self).filter_queryset(queryset)
