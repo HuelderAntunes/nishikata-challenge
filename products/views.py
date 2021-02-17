@@ -26,12 +26,18 @@ class ProductListView(TemplateView):
 
 
 class ProductDataView(ListAPIView):
-    queryset = pivot(ProductUrl,
-                     ['product_url', 'created_at'],
-                     'consult_date',
-                     'sales',
-                     default=0
-                     ).annotate(sales=Sum('sales')).order_by('product_url')
+    queryset = ProductUrl
+
+    def filter_queryset(self, queryset):
+        queryset = super(ProductDataView, self).filter_queryset(queryset)
+
+        queryset = pivot(ProductUrl,
+                         ['product_url', 'created_at'],
+                         'consult_date',
+                         'sales',
+                         default=0
+                         ).annotate(sales=Sum('sales')).order_by('product_url')
+        return queryset
 
     def get_serializer_class(self):
         return None
